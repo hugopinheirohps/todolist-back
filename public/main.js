@@ -9,8 +9,17 @@ const chaveLocal = 'boxtarefas';
 let tarefas = [];
 
 const getTarefas = async () => {
+
+    //criar um objeto de ações
+     let opcoes = {
+        method: "GET",
+        headers: {
+            "Authorization" : `bearer ${sessionStorage.getItem('token')}`
+        }
+     }
+
     // Disparando uma requisição para carregar para obter uma resposta
-    let resposta = await fetch(`${urlBase}/tarefas`);
+    let resposta = await fetch(`${urlBase}/tarefas`, opcoes);
 
     // Extraindo o conteúdo JSON da resposta
     tarefas = await resposta.json();
@@ -26,7 +35,8 @@ const addNovaTarefa = async (texto) => {
         method: "POST",
         body: JSON.stringify({texto}),
         headers: {
-            'Content-Type':'application/json'
+            'Content-Type':'application/json',
+            'Authorization': `bearer${sessionStorage.getItem('token')}`
         }
     }
     let resposta = await fetch(`${urlBase}/tarefas`, opcoes);

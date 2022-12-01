@@ -40,5 +40,53 @@
         "nome": "Goleador da Suíça",
         "email": "goleador7@suica.com",
         "senha": "$2b$10$I0x18K59hKvOUR3jFbBaX./CQ.RIwnm4xsYCcSUbEGtIC8BUG6xZW"
+    },
+    {
+        "id": 10,
+        "nome": "fghfgh",
+        "email": "jhon_neto@hotmail.com",
+        "senha": "$2b$10$aUQjejRKng7iLH6G10kzzO9vkka6WXQOWF2rJ6uAYdX/XIO8WEHJO"
+    },
+    {
+        "id": 11,
+        "nome": "fghfgh",
+        "email": "jhon_netos@hotmail.com"
+    },
+    {
+        "id": 12,
+        "nome": "ddfdf",
+        "email": "jhon_netosd@hotmail.com"
+    },
+    {
+        "id": 13,
+        "nome": "fghfgh",
+        "email": "jhon_netod@hotmail.com"
+    },
+    {
+        "id": 14,
+        "nome": "sdfsdf",
+        "email": "jhon_netoxxx@hotmail.com"
+    },
+    {
+        "id": 15,
+        "nome": "sdfsdfsdf",
+        "email": "jhon_netoasdasd@hotmail.com"
+    },
+    {
+        "id": 16,
+        "nome": "sdfsdfddd",
+        "email": "jhon_netoggx@hotmail.com"
+    },
+    {
+        "id": 17,
+        "nome": "fghfgfh",
+        "email": "jhon_netdo@hotmail.com",
+        "senha": "$2b$10$UTaTJlXrkYW8t.O4aZ80Ee3VA6sJXLli8PgyIMZC9iWb3GRLwFl0a"
+    },
+    {
+        "id": 18,
+        "nome": "fgghhu",
+        "email": "jhon_netuo@hotmail.com",
+        "senha": "$2b$10$7Xg1IPavVsARlCqeiv.dlOGwDoig7s4e2Me6r.a7xLZyXNLfMUcjS"
     }
 ]

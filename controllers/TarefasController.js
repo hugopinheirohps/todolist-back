@@ -1,17 +1,30 @@
 const filePath = '../database/tarefas.json';
 const tarefas = require(filePath);
 
-function save(){
+function save(email, tarefas){
     let fs = require('fs');
     let path = require('path');
+
+    const filePath = `../database/${email}-tarefas.json`;
+ 
     fs.writeFileSync(path.resolve(__dirname + `/${filePath}`), JSON.stringify(tarefas, null, 4));
+}
+
+
+function load(email){
+    const filePath = `../database/${email}-tarefas.json`;
+    const tarefas = require(filePath);
+    return tarefas;
 }
 
 const TarefasController = {
     index: (req, res) => {
+        let filePath = `../database/${req.usuario.email}-tarefas.json`;
+        let tarefas = require(filePath);
         return res.send(tarefas);
     },
     store: (req, res) => {
+        let tarefas = load(req.usuario.email);
         let novoId = 1;
         if(tarefas.length > 0){
             novoId = tarefas[tarefas.length - 1].id + 1;
@@ -19,7 +32,8 @@ const TarefasController = {
         let {texto} = req.body;
         let tarefa = {id: novoId, texto, feita: false};
         tarefas.push(tarefa);
-        save();
+        save(req.usuario.email, tarefas);
+
         return res.status(201).json(tarefa);
     },
     update: (req, res) => {
