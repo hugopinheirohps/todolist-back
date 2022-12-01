@@ -18,8 +18,7 @@ function load(email){
 
 const TarefasController = {
     index: (req, res) => {
-        let filePath = `../database/${req.usuario.email}-tarefas.json`;
-        let tarefas = require(filePath);
+        let tarefas = load(req.usuario.email);
         return res.send(tarefas);
     },
     store: (req, res) => {
@@ -47,24 +46,27 @@ const TarefasController = {
         return res.status(200).json({msg:'ok'});
     },
     updateFeita: (req, res) => {
+        let tarefas = load(req.usuario.email);
         let id = req.params.id
         let tarefa = tarefas.find(t => t.id == id);
         tarefa.feita = true;
-        save();
+        save(req.usuario.email, tarefas);
         return res.status(200).json({msg:'feita'});
     },
     updateDesfeita: (req, res) => {
+        let tarefas = load(req.usuario.email);
         let id = req.params.id
         let tarefa = tarefas.find(t => t.id == id);
         tarefa.feita = false;
-        save();
+        save(req.usuario.email, tarefas);
         return res.status(200).json({msg:'desfeita'});
     },
     delete: (req, res) => {
+        let tarefas = load(req.usuario.email);
         let id = req.params.id;
         let pos = tarefas.findIndex(t => t.id == id);
         tarefas.splice(pos, 1);
-        save();
+        save(req.usuario.email, tarefas);
         return res.status(200).json({msg:'deleted'});
     }
 }

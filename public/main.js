@@ -59,7 +59,10 @@ const removerTarefa = async (id) =>{
 
     // Disparar uma requisição para urlBase/tarefas/{id} do tipo delete
     let opcoes = {
-        method: "DELETE"
+        method: "DELETE",
+        headers: {
+            "Authorization" : `bearer ${sessionStorage.getItem('token')}`
+        }
     }
     let resposta = await fetch(`${urlBase}/tarefas/${id}`, opcoes);
 
@@ -93,7 +96,10 @@ const alterarTarefa = async (id) => {
 
     // Disparar a requisição e capturar a resposta
     let opcoes = {
-        method: "PATCH"
+        method: "PATCH",
+        headers: {
+            "Authorization" : `bearer ${sessionStorage.getItem('token')}`
+        }
     }
     let resposta = await fetch(url, opcoes);
 
