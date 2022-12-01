@@ -5,59 +5,60 @@ let inputSenha = document.getElementById("regSenha");
 let inputConf = document.getElementById("regConf");
 let formRegistrar = document.getElementById("form-registrar");
 
-// const urlBase = 'https://todolist-0622.herokuapp.com';
+// 
 const urlBase = '/api';
 
 const tratarResposta = async response => {
-
-    switch(response.status){
+    switch (response.status) {
         case 201:
-            //capturar o token
+            
+            // Capturar o token respondido pelo servidor
             let conteudo = await response.json();
 
-            //salvar o token
+            // Salvar o token (sessionStorage)
             sessionStorage.setItem('token', conteudo.token);
-            sessionStorage.setItem('usuario',JSON.stringify(conteudo.usuario));
+            sessionStorage.setItem('usuario', JSON.stringify(conteudo.usuario));
 
-            // carregar a index.html
-            location = "index.html"
+            // Carregar a index.html
+            location = "index.html";
 
             break;
-        
+
         case 409:
-            alert("Email já cadastrado.");
+            alert("E-mail já cadastrado.");
             break;
-        
+
         case 422:
             alert("Senha preenchida incorretamente.");
             break;
-            
+
         default:
             alert(`Erro inesperado: ${response.status}`);
             break;
     }
-
+  
 }
 
-
 const registrarUsuario = async (dados) => {
-    // 1 - Definir a url para onde vai ser enviada
+
+    // 1 - Definir a URL para onde a req vai ser enviada
     let url = `${urlBase}/auth/registrar`
 
-    // 2 preparar opções de envio
+    // 2 - Preparar as opções de envio
     let opcoes = {
-        method:"POST",
-        body:JSON.stringify(dados),
-        headers:{
-            "Content-type": "application/json"
+        method: "POST",
+        body: JSON.stringify(dados),
+        headers: {
+            "Content-Type": "application/json"
         }
     }
 
-    // 3 enviar os dados para endereço de registro
+    // 3 - Enviar os dados para o endereço de registro
+    let response = await fetch(url, opcoes);
 
-    let response = await fetch(url,opcoes);
-    //console.log(response);
+    // 4 - Tratar a resposta
     tratarResposta(response);
+
 }
 
 // Listeners

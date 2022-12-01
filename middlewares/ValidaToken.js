@@ -1,20 +1,18 @@
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
 
-const ValidaToken = (req,res,next) => {
+const ValidaToken = (req, res, next) => {
 
-    //verificar se token é valido
-    try{
-        //guardar as info do usuario req.usuario
+    // Verificar se token é válido
+    try {
+        // Guardar as informações do usuário req.usuario    
         req.usuario = jwt.verify(req.token, process.env.JWT_KEY);
-    }
-    catch (error){
+
+    } catch (error) {
         return res.status(403).json({erro:"Perdeu!"});
     }
     
-    console.log(req.usuario);
     next();
-
 }
 
 module.exports = ValidaToken;

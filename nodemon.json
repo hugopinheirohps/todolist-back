@@ -1,3 +1,4 @@
 {
-  "ignore": ["database/*"]
+    "ignore": ["database/*"]
 }
+  
