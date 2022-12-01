@@ -35,7 +35,8 @@ const addNovaTarefa = async (texto) => {
         method: "POST",
         body: JSON.stringify({texto}),
         headers: {
-            'Content-Type':'application/json'
+            'Content-Type':'application/json',
+            "Authorization" : `bearer ${sessionStorage.getItem('token')}`
         }
     }
     let resposta = await fetch(`${urlBase}/tarefas`, opcoes);
