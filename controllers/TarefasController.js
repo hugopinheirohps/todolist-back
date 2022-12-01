@@ -9,6 +9,8 @@ function save(){
 
 const TarefasController = {
     index: (req, res) => {
+        let filePath = `../database/${req.usuario.email}-tarefas.json`;
+        let tarefas = require(filePath);
         return res.send(tarefas);
     },
     store: (req, res) => {
